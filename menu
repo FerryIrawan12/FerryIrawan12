@@ -1,0 +1,34 @@
+package main;
+import data.data_kasir;
+import java.util.Scanner;
+public class menu {
+   Scanner input=new Scanner(System.in);
+   private data_kasir data=new data_kasir();
+    public void menuUtama()
+    {
+       
+       int ulang;
+        do
+        {
+        System.out.println("1. tambah karyawan");
+        System.out.println("2. tampil karyawan");
+        System.out.println("3. hapus karyawan");
+        System.out.println("4. update karyawan");
+        System.out.println("5. tes login");
+        System.out.print("pilih menu : ");
+        int pil=input.nextInt();
+        switch (pil)
+        {
+            case 1 -> data.input();
+            case 2 -> data.read();
+            case 3 -> data.delete();
+            case 4 -> data.update_pass();
+            case 5 -> data.login();
+        }
+            System.out.print("ulang : ");
+            ulang=input.nextInt();
+        }
+        while(ulang!=5);
+        }
+    
+}

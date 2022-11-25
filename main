@@ -1,0 +1,36 @@
+
+package main;
+import data.data_kasir;
+import Entity.entity_idkasir;
+public class Main {
+
+ 
+    public static void main(String[] args) {
+    System.out.println("Project PBO 2022");
+//
+//        //input data kasir
+//        data_kasir database_kasir = new data_kasir();
+//        entity_idkasir objekkasir1=new entity_idkasir ("1");
+//         entity_idkasir objekkasir2=new entity_idkasir ("2");
+//        database_kasir.create("kurniawan",155,"123",objekkasir1);
+//        database_kasir.create("aan",156,"123",objekkasir2);
+//        database_kasir.read(); // viev database kasir
+//
+//        // cek method update
+//        database_kasir.update_pass(111,"111"); //pengujian salah
+//        database_kasir.update_pass(155,"111"); //pengujian benar
+//        database_kasir.read();
+//
+//        //cek method delete
+//        database_kasir.delete(111); //pengujian salah
+//        database_kasir.delete(155); //pengujian benar
+//        database_kasir.read();
+//
+//        //tes login
+//        int nip1 = database_kasir.login(156,"111");
+//        int nip2 = database_kasir.login(156,"123");
+  menu objekmenu=new menu();
+  objekmenu.menuUtama();
+    }
+    
+}

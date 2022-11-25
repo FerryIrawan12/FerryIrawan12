@@ -1,0 +1,24 @@
+
+package Entity;
+
+public class entity_idkasir {
+    public String idkasir;
+
+    public entity_idkasir(String idkasir) {
+      
+        this.idkasir=idkasir;
+    }
+
+    public String getIdkasir() {
+        return idkasir;
+    }
+
+    public void setIdkasir(String idkasir) {
+        this.idkasir = idkasir;
+    }
+    public void cetak()
+    {
+        System.out.println("id kasir : "+this.idkasir);
+    }
+ 
+}

@@ -1,0 +1,144 @@
+
+package data;
+import Entity.entity_kasir;
+import Entity.entity_idkasir;
+import  java.util.Scanner;
+import java.util.ArrayList;
+
+public class data_kasir {
+    private ArrayList<entity_kasir> data_kasir;
+    private entity_kasir id;
+    
+    Scanner input=new Scanner(System.in);
+    public data_kasir()
+    {
+        data_kasir = new ArrayList<entity_kasir>();
+    }
+    
+    public void input()
+    {
+     String nama,pass,idkasir;
+     int nip;
+        System.out.print("input nama    : ");
+        nama=input.nextLine();
+        System.out.print("input idkasir : ");
+        idkasir=input.nextLine();
+        System.out.print("input nip     : ");
+        nip=input.nextInt();
+        input.nextLine();
+        System.out.print("input pass    : ");
+        pass=input.nextLine();
+        
+        entity_idkasir objekid=new entity_idkasir(idkasir);
+        create(nama,nip,pass,objekid);
+        
+    }
+    public void create(String nama, int nip, String pass,entity_idkasir idkasir)
+    {
+        this.data_kasir.add(new entity_kasir(nama,nip,pass,idkasir));
+    }
+
+    public void read()
+    {
+        System.out.println("==== DATA KASIR ====");
+        for (int i=0;i<this.data_kasir.size();i++)
+        {
+            this.data_kasir.get(i).cetak();
+        }
+    }
+
+    private int search(int nip)
+    {
+        for (int i=0;i<this.data_kasir.size();i++)
+        {
+            if (nip == this.data_kasir.get(i).getNip())
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+   
+    public void update_pass(int nip, String pass)
+    {
+        int index = this.search(nip);
+        if (index == -1)
+        {
+            System.out.println("data tidak ditemukan");
+        }
+        else
+        {
+            this.data_kasir.get(index).setPass(pass);
+            System.out.println("data nip "+nip+" berhasil update password");
+        }
+    }
+    public void update_pass()
+    {
+        System.out.print("masukkan nip :");
+        int nip=input.nextInt();
+        System.out.print("masukkan password baru : ");
+        String pass=input.nextLine();
+        update_pass(nip,pass);
+    }
+
+    public void delete(int nip)
+    {
+        int index = this.search(nip);
+        if (index == -1)
+        {
+            System.out.println("data tidak ditemukan");
+        }
+        else
+        {
+            this.data_kasir.remove(index);
+            System.out.println("data dengan NIP "+index +" berhasil dihapus");
+        }
+    }
+    public void delete()
+    {
+        System.out.print("masukkan nip yang dihapus : ");
+        int nip=input.nextInt();
+        delete(nip);
+    }
+   
+    private int cek_login(int nip, String pass)
+    {
+        for (int i=0;i<this.data_kasir.size();i++)
+        {
+            if (nip==this.data_kasir.get(i).getNip())
+            {
+                if (pass.equals(this.data_kasir.get(i).getPass()))
+                {
+                    return this.data_kasir.get(i).getNip();
+                }
+            }
+        }
+        return -1;
+    }
+
+    public int login(int nip, String pass)
+    {
+        int nipKasir = this.cek_login(nip,pass);
+        if (nipKasir == -1)
+        {
+            System.out.println("NIP "+nip +" login gagal");
+        }
+        else
+        {
+            System.out.println("NIP "+nip +" login berhasil");
+        }
+        return nipKasir;
+    }
+    public void login()
+    {
+        System.out.print("nip :");
+        int nip=input.nextInt();
+        input.nextLine();
+        System.out.print("password : ");
+        String pass=input.nextLine();
+        cek_login(nip,pass);
+        login(nip,pass);
+    }
+    
+}
